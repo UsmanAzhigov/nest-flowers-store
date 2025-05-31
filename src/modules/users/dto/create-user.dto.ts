@@ -3,27 +3,27 @@ import { IsEmail, IsNotEmpty, IsPhoneNumber, IsString, MinLength } from "class-v
  export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
-  firstName: string;
+  firstName: string = 'John';
 
   @IsString()
   @IsNotEmpty()
-  lastName: string;
+  lastName: string = 'Doe';
 
   @IsEmail()
   @IsNotEmpty()
-  email: string;
+  email: string = 'john.doe@example.com';
 
   @IsString()
   @MinLength(6)
   @IsNotEmpty()
-  password: string;
+  password: string = 'password';
 
   @IsString()
   @IsNotEmpty()
-  address: string;
+  address: string = '123 Main St';
 
   @IsString()
   @IsPhoneNumber()
   @IsNotEmpty()
-  phone: string;
+  phone: string = '+1234567890';
  }

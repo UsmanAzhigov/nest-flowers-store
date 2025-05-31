@@ -7,7 +7,7 @@ export const dataSourceOptions: DataSourceOptions = {
   port: 5432,
   username: 'postgres',
   password: 'postgres',
-  database: 'flowers_store',
+  database: 'nest-shop',
   entities: [UserEntity],
   migrations: ['dist/migrations/*.js'],
   synchronize: false,

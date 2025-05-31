@@ -14,7 +14,7 @@ import { AppService } from './app.service';
       port: Number(process.env.DB_PORT) || 5432,
       username: process.env.DB_USER || 'usmanazhigov',
       password: '',
-      database: process.env.DB_NAME || 'flowers_store',
+      database: process.env.DB_NAME || 'nest-shop',
       entities: [UserEntity],
       synchronize: true, // Не используйте synchronize: true в продакшене!
     }),
@@ -25,6 +25,6 @@ import { AppService } from './app.service';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggerMiddleware).forRoutes('flowers');
+    consumer.apply(LoggerMiddleware).forRoutes('users');
   }
 }
