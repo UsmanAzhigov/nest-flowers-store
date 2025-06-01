@@ -31,7 +31,7 @@ export class UsersController {
 
   @Get(':id')
   @ApiOperation({ summary: 'Получение пользователя по ID' })
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: number) {
     return this.usersService.findOne(id);
   }
 
@@ -46,13 +46,13 @@ export class UsersController {
       }
     }
   })
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
+  update(@Param('id') id: number, @Body() updateUserDto: UpdateUserDto) {
     return this.usersService.update(id, updateUserDto);
   }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Удаление пользователя по ID' })
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: number) {
     return this.usersService.remove(id);
   }
 }

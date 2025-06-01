@@ -1,4 +1,5 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
+import { ProductEntity } from '../modules/products/entities/product.entity';
 import { UserEntity } from '../modules/users/entities/user.entity';
 
 export const dataSourceOptions: DataSourceOptions = {
@@ -8,7 +9,7 @@ export const dataSourceOptions: DataSourceOptions = {
   username: 'postgres',
   password: 'postgres',
   database: 'nest-shop',
-  entities: [UserEntity],
+  entities: [UserEntity, ProductEntity],
   migrations: ['dist/migrations/*.js'],
   synchronize: false,
 };

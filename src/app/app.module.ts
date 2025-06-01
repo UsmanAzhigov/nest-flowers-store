@@ -1,6 +1,8 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoggerMiddleware } from 'src/middleware/middleware';
+import { ProductEntity } from 'src/modules/products/entities/product.entity';
+import { ProductsModule } from 'src/modules/products/products.module';
 import { UserEntity } from 'src/modules/users/entities/user.entity';
 import { UsersModule } from 'src/modules/users/users.module';
 import { AppController } from './app.controller';
@@ -15,10 +17,11 @@ import { AppService } from './app.service';
       username: process.env.DB_USER || 'usmanazhigov',
       password: '',
       database: process.env.DB_NAME || 'nest-shop',
-      entities: [UserEntity],
-      synchronize: true, // Не используйте synchronize: true в продакшене!
+      entities: [UserEntity, ProductEntity],
+      synchronize: true, // нельзя использовать synchronize: true в продакшене!
     }),
-    UsersModule
+    UsersModule,
+    ProductsModule
   ],
   controllers: [AppController],
   providers: [AppService],
