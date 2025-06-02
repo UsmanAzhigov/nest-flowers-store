@@ -1,6 +1,8 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { LoggerMiddleware } from 'src/middleware/middleware';
+import { AuthModule } from 'src/modules/auth/auth.module';
 import { ProductEntity } from 'src/modules/products/entities/product.entity';
 import { ProductsModule } from 'src/modules/products/products.module';
 import { UserEntity } from 'src/modules/users/entities/user.entity';
@@ -10,6 +12,9 @@ import { AppService } from './app.service';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TypeOrmModule.forRoot({
       type:  'postgres',
       host: process.env.DB_HOST || 'localhost',
@@ -21,7 +26,8 @@ import { AppService } from './app.service';
       synchronize: true, // нельзя использовать synchronize: true в продакшене!
     }),
     UsersModule,
-    ProductsModule
+    ProductsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

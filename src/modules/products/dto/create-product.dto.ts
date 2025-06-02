@@ -24,10 +24,12 @@ export class CreateProductDto {
   @ApiProperty({ description: 'Количество товара' })
   quantity: number = 10;
 
-  @IsString()
-  @IsNotEmpty()
-  @ApiProperty({ description: 'Изображение товара' })
-  image: string = 'https://via.placeholder.com/150';
+  @ApiProperty({
+    description: 'Изображение товара',
+    type: 'string',
+    format: 'binary'
+  })
+  image: Express.Multer.File;
 
   @IsString()
   @IsNotEmpty()

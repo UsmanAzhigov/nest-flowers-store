@@ -16,7 +16,10 @@ export class ProductsService {
   ) {}
 
   create(createProductDto: CreateProductDto) {
-    return this.productsRepository.save(createProductDto);
+    return this.productsRepository.save({
+      ...createProductDto,
+      image: createProductDto.image.path,
+    });
   }
 
   findAll() {
@@ -45,7 +48,10 @@ export class ProductsService {
   }
 
   update(id: number, updateProductDto: UpdateProductDto) {
-    return this.productsRepository.update(id, updateProductDto);
+    return this.productsRepository.update(id, {
+      ...updateProductDto,
+      image: updateProductDto.image?.path,
+    });
   }
 
   remove(id: number) {
