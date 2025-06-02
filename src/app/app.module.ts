@@ -16,14 +16,14 @@ import { AppService } from './app.service';
       isGlobal: true,
     }),
     TypeOrmModule.forRoot({
-      type:  'postgres',
+      type: 'postgres',
       host: process.env.DB_HOST || 'localhost',
       port: Number(process.env.DB_PORT) || 5432,
       username: process.env.DB_USER || 'usmanazhigov',
       password: '',
       database: process.env.DB_NAME || 'nest-shop',
       entities: [UserEntity, ProductEntity],
-      synchronize: true, // нельзя использовать synchronize: true в продакшене!
+      synchronize: true, // нельзя использовать synchronize: true в продакшене! Потому что это может привести к потере данных
     }),
     UsersModule,
     ProductsModule,
