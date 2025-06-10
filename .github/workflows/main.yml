@@ -23,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: Запуск тестов
-        run: npm test
+        run: npm run test
 
       - name: Список файлов в репозитории
         run: ls ${{ github.workspace }}
